@@ -1,57 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
 import './App.css';
-
+import { HashRouter } from 'react-router-dom';
+import NavigationBar from './components/NavigationBar';
+import AllNotes from './components/AllNotes';
+import LoginPage from './components/LoginPage';
+import { Route, Routes } from "react-router-dom";
+import CreateNewAccount from './components/CreateNewAccount';
+import NewNote from './components/NewNote';
+import GetANote from './components/getANote';
 function App() {
+  
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <HashRouter>
+        <div className='app'>
+          <NavigationBar />
+          <Routes>
+            <Route path='/' exact element={<LoginPage />} />
+            <Route path='/all_note' exact element={<AllNotes />}/>
+            <Route path='/create_new_account' exact element={<CreateNewAccount />}/>
+            <Route path='/new_note' exact element={<NewNote />}/>
+            <Route path='/get_a_note/:id' exact element={<GetANote />}/>
+          </Routes>
+        </div>
+    </HashRouter>
   );
 }
 
